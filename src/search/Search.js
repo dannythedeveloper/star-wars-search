@@ -10,16 +10,20 @@ export default function Search(props) {
             >
                 <label htmlFor='search-bar' className='search'>Search: </label>
                 <input
+                    id='search-bar'
+                    name='search-bar'
                     className='search-bar'
                     type='text'
                     onChange={props.handleSearch}
-                    required
+                    aria-required='true'
                 />
                 <label htmlFor='filter-select' className='filter'>Filter: </label>
                 <select 
+                    id='filter-select'
+                    name='filter-select'
                     className='filter-select' 
                     onChange={props.handleFilter} 
-                    required
+                    aria-required='true'
                 >
                     <option value=''>Select One</option>
                     <option value='planets'>Planets</option>
