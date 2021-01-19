@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Item Component renders the UI 1`] = `
+<div
+  className="item"
+>
+  <h2 />
+</div>
+`;

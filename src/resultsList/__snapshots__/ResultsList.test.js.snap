@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultsList Component renders the UI 1`] = `
+<div>
+  <div
+    className="item"
+  >
+    <h2>
+      Luke Skywalker
+    </h2>
+  </div>
+</div>
+`;

@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Component renders the UI 1`] = `
+<div
+  className="search"
+>
+  <form
+    className="search-form"
+  >
+    <label
+      className="search"
+      htmlFor="search-bar"
+    >
+      Search: 
+    </label>
+    <input
+      className="search-bar"
+      required={true}
+      type="text"
+    />
+    <label
+      className="filter"
+      htmlFor="filter-select"
+    >
+      Filter: 
+    </label>
+    <select
+      className="filter-select"
+      required={true}
+    >
+      <option
+        value=""
+      >
+        Select One
+      </option>
+      <option
+        value="planets"
+      >
+        Planets
+      </option>
+      <option
+        value="starships"
+      >
+        Starships
+      </option>
+      <option
+        value="vehicles"
+      >
+        Vehicles
+      </option>
+      <option
+        value="people"
+      >
+        Characters
+      </option>
+      <option
+        value="films"
+      >
+        Films
+      </option>
+      <option
+        value="species"
+      >
+        Species
+      </option>
+    </select>
+    <button
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</div>
+`;

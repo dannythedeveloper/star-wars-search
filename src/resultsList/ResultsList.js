@@ -3,7 +3,11 @@ import Item from '../item/Item';
 
 export default class ResultsList extends React.Component {
     getResults = () => {
-        if(this.props.blankResults) {
+        if(this.props.loading) {
+            return (
+                <h2>Loading your results...</h2>
+            )
+        } else if(this.props.blankResults && this.props.loading === false) {
             return (
                 <h2>There are no results to display. Check your search inputs and try again.</h2>
             );

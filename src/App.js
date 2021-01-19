@@ -36,27 +36,36 @@ export default class App extends React.Component {
     input = input.split(' ').join('+');
     let filter = this.state.filter;
 
-    fetch(`${BASE_URL}${filter}/?search=${input}`)
-      .then((response) => {
-        if (!response.ok) {
-          return response.json().then((event) => Promise.reject(event));
-        } else return response.json();
-      })
-      .then(data => {
-        if (data.count < 1) {
-          this.setState({ blankResults: true, loading: false })
-        } else {
-          this.setState({
-            results: [...data.results],
-            loading: false,
-            blankResults: false
-          })
-        }
-      })
-      .catch(error => {
-        alert(`Something went wrong: ${ error }. Please try refreshing the page.`)
-      });
-  };
+    this.setState({ loading: true })
+
+    this.timeout = setTimeout(() => {
+      fetch(`${BASE_URL}${filter}/?search=${input}`)
+        .then((response) => {
+          if (!response.ok) {
+            return response.json().then((event) => Promise.reject(event));
+          } else return response.json();
+        })
+        .then(data => {
+          if (data.count < 1) {
+            this.setState({ blankResults: true, loading: false })
+          } else {
+            this.setState({
+              results: [...data.results],
+              loading: false,
+              blankResults: false
+            })
+          }
+        })
+        .catch(error => {
+          alert(`Something went wrong: ${ error }. Please try refreshing the page.`)
+        });
+      },
+    1000);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timeout)
+  }
 
   render() {
     return (
@@ -73,6 +82,7 @@ export default class App extends React.Component {
         <ErrorBoundary>
         <ResultsList 
           results={this.state.results}
+          loading={this.state.loading}
           blankResults={this.state.blankResults}
         />
         </ErrorBoundary>
