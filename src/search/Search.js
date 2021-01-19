@@ -8,16 +8,16 @@ export default function Search(props) {
                 className='search-form' 
                 onSubmit={props.getSearchInfo}
             >
-                <label htmlFor='search-bar'>Search: </label>
+                <label htmlFor='search-bar' className='search'>Search: </label>
                 <input
                     className='search-bar'
                     type='text'
                     onChange={props.handleSearch}
                     required
                 />
-                <label htmlFor='filter'>Filter: </label>
+                <label htmlFor='filter-select' className='filter'>Filter: </label>
                 <select 
-                    className='filter' 
+                    className='filter-select' 
                     onChange={props.handleFilter} 
                     required
                 >

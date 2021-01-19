@@ -11,6 +11,9 @@ export default class App extends React.Component {
       results: [],
       searchInput: '',
       filter: '',
+      touched: false,
+      loading: false, 
+      blankResults: false
     }
   };
 
@@ -40,9 +43,15 @@ export default class App extends React.Component {
         } else return response.json();
       })
       .then(data => {
-        this.setState({
-          results: [...data.results]
-        })
+        if (data.count < 1) {
+          this.setState({ blankResults: true, loading: false })
+        } else {
+          this.setState({
+            results: [...data.results],
+            loading: false,
+            blankResults: false
+          })
+        }
       })
       .catch(error => {
         alert(`Something went wrong: ${ error }. Please try refreshing the page.`)
@@ -59,9 +68,13 @@ export default class App extends React.Component {
           handleFilter={this.handleFilter}
           handleSearch={this.handleSearch}
           getSearchInfo={this.getSearchInfo}
+          blankResults={this.state.blankResults}
         /> 
         <ErrorBoundary>
-        <ResultsList results={this.state.results}/>
+        <ResultsList 
+          results={this.state.results}
+          blankResults={this.state.blankResults}
+        />
         </ErrorBoundary>
       </main>
     );

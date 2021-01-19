@@ -4,12 +4,14 @@
     text-align: center;
 }
 
-.results-filter {
-    background-color: lightgray;
-    padding: 10px;
-    text-align: center;
+.filter {
+    margin-left: 5px;
 }
 
-.book-type {
+.filter-select {
+    padding: 1px;
+}
+
+button {
     margin-left: 5px;
 }
