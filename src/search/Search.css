@@ -1,0 +1,15 @@
+.search-form {
+    background-color: gray;
+    padding: 10px;
+    text-align: center;
+}
+
+.results-filter {
+    background-color: lightgray;
+    padding: 10px;
+    text-align: center;
+}
+
+.book-type {
+    margin-left: 5px;
+}

@@ -1,0 +1,6 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: gray solid 1px;
+}
