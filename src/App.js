@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorBoundary from './ErrorBoundary';
 import './App.css';
 import ResultsList from './resultsList/ResultsList';
 import Search from './search/Search';
@@ -33,7 +34,11 @@ export default class App extends React.Component {
     let filter = this.state.filter;
 
     fetch(`${BASE_URL}${filter}/?search=${input}`)
-      .then(response => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          return response.json().then((event) => Promise.reject(event));
+        } else return response.json();
+      })
       .then(data => {
         this.setState({
           results: [...data.results]
@@ -48,14 +53,16 @@ export default class App extends React.Component {
     return (
       <main className='App'>
         <header>
-          <h1>Star Wars API</h1>
+          <h1>Star Wars API Search</h1>
         </header>
         <Search
           handleFilter={this.handleFilter}
           handleSearch={this.handleSearch}
           getSearchInfo={this.getSearchInfo}
         /> 
+        <ErrorBoundary>
         <ResultsList results={this.state.results}/>
+        </ErrorBoundary>
       </main>
     );
   }
